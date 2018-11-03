@@ -14,6 +14,18 @@ import * as React from "react";
 import * as moment from "moment";
 import * as Popper from "popper.js";
 
+export interface RenderCustomHeaderParams {
+	date: moment.Moment;
+	changeYear: (value: number |string) => void;
+	changeMonth:(value: number |string) => void;
+	decreaseMonth:() => void;
+	increaseMonth:() => void;
+	prevMonthButtonDisabled?: boolean;
+	nextMonthButtonDisabled?: boolean;
+	selectingDate?: moment.Moment;
+	monthContainer?: any;
+}
+
 export interface ReactDatePickerProps {
 	adjustDateOnChange?: boolean;
 	allowSameDay?: boolean;
@@ -98,6 +110,8 @@ export interface ReactDatePickerProps {
 	weekLabel?: string;
 	withPortal?: boolean;
 	yearDropdownItemNumber?: number;
+	renderCustomHeader?: (options:RenderCustomHeaderParams ) => React.ReactElement<any>;
+	
 }
 declare const ReactDatePicker: React.ClassicComponentClass<ReactDatePickerProps>;
 export default ReactDatePicker;
